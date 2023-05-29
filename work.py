@@ -16,12 +16,12 @@ import datetime as dt
 import streamlit as st
 
 # Observe recent changes
-start = dt.datetime(2019, 1, 1).strftime('%Y-%m-%d')
+start = dt.datetime(2015, 1, 1).strftime('%Y-%m-%d')
 end =  dt.date.today()
-#end='2023-2-23'
+#end='2023-5-1'
 
 # set ticker's symbol in yahoo stock
-ticker='2330.TW'
+ticker='2618.TW'
 
 # Downloading data
 
@@ -35,8 +35,8 @@ df['bb_lower'] = pandas_ta.bbands(close=df['Adj Close'],length=20).iloc[:,0]
 df['bb_upper'] = pandas_ta.bbands(close=df['Adj Close'],length=20).iloc[:,2]
 df['forward_1d'] = df['Adj Close'].pct_change(1).shift(-1)
 
-fig=ex.line(df, x=df.index, y=['Adj Close','bb_lower','bb_upper'], title='台鋼  Adj Close with Bollinger Bands')
-fig.update_layout(title_text=f'台鋼 Adj Close with Bollinger Bands', title_x=0.5);
+fig=ex.line(df, x=df.index, y=['Adj Close','bb_lower','bb_upper'], title='長榮航 (2618.TW) Adj Close with Bollinger Bands')
+fig.update_layout(title_text=f'長榮航 (2618.TW) Adj Close with Bollinger Bands', title_x=0.5);
 
 # Plot!
 st.plotly_chart(fig, use_container_width=True)
